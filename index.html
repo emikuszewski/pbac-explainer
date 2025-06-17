@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Policy-Based Access Control: The Future of Authorization</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Policy-Based Access Control</h1>
+            <p class="subtitle">The Evolution of Authorization for Modern Business</p>
+            
+            <div class="circles-container">
+                <div class="circle rbac" onclick="scrollToSection('comparison')">
+                    <span class="circle-label">ROLE-BASED<br>ACCESS CONTROL</span>
+                </div>
+                <div class="circle abac" onclick="scrollToSection('comparison')">
+                    <span class="circle-label">ATTRIBUTE-BASED<br>ACCESS CONTROL</span>
+                </div>
+                <div class="circle pbac" onclick="scrollToSection('comparison')">
+                    <span class="circle-label">POLICY-BASED<br>ACCESS CONTROL</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Section -->
+    <section class="section" id="comparison">
+        <h2 class="section-title">Understanding Access Control Evolution</h2>
+        
+        <div class="comparison-grid">
+            <div class="card fade-in stagger-1">
+                <h3 class="card-title">Role-Based (RBAC)</h3>
+                <div class="card-content">
+                    <p>Traditional approach based on predefined roles and permissions.</p>
+                    <div class="pros-cons">
+                        <div class="highlights">
+                            <strong>Highlights:</strong>
+                            <ul>
+                                <li>Simple to understand</li>
+                                <li>Easy initial setup</li>
+                            </ul>
+                        </div>
+                        <div class="considerations">
+                            <strong>Considerations:</strong>
+                            <ul>
+                                <li>Role explosion</li>
+                                <li>Inflexible</li>
+                                <li>Hard to scale</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card fade-in stagger-2">
+                <h3 class="card-title">Attribute-Based (ABAC)</h3>
+                <div class="card-content">
+                    <p>Uses attributes of users, resources, and environment for access decisions.</p>
+                    <div class="pros-cons">
+                        <div class="highlights">
+                            <strong>Highlights:</strong>
+                            <ul>
+                                <li>More flexible</li>
+                                <li>Fine-grained control</li>
+                            </ul>
+                        </div>
+                        <div class="considerations">
+                            <strong>Considerations:</strong>
+                            <ul>
+                                <li>Complex to manage</li>
+                                <li>Performance overhead</li>
+                                <li>Difficult to audit</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card fade-in stagger-3">
+                <h3 class="card-title">Policy-Based (PBAC)</h3>
+                <div class="card-content">
+                    <p>Combines RBAC and ABAC with natural language policies for intelligent access control.</p>
+                    <div class="pros-cons">
+                        <div class="highlights">
+                            <strong>Highlights:</strong>
+                            <ul>
+                                <li>Natural language policies</li>
+                                <li>Dynamic & real-time</li>
+                                <li>Full visibility</li>
+                                <li>Scales with business</li>
+                                <li>Easy compliance</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Demo Section -->
+    <section class="section">
+        <h2 class="section-title">See PBAC in Action</h2>
+        
+        <div class="demo-section">
+            <p style="text-align: center; margin-bottom: 2rem; color: #b0bec5;">
+                Experience how natural language policies make access control intuitive and powerful
+            </p>
+            
+            <div class="demo-container">
+                <div class="policy-creator">
+                    <h3 style="margin-bottom: 1rem;">Create a Policy</h3>
+                    <input type="text" class="policy-input" id="policyInput" value="Bank employees can view customer data" readonly>
+                    
+                    <div class="access-type">
+                        <button class="access-btn allow-btn active" id="allowBtn" onclick="setAccessType('allow')">Allow Access When...</button>
+                        <button class="access-btn restrict-btn" id="restrictBtn" onclick="setAccessType('restrict')">Restrict Access When...</button>
+                    </div>
+                    
+                    <div class="conditions">
+                        <h4 style="margin-bottom: 1rem;">Conditions</h4>
+                        <div class="condition-item">
+                            <span>During Business Hours</span>
+                            <div class="toggle active" onclick="toggleCondition(this)">
+                                <div class="toggle-slider"></div>
+                            </div>
+                        </div>
+                        <div class="condition-item">
+                            <span>Valid Authentication</span>
+                            <div class="toggle active" onclick="toggleCondition(this)">
+                                <div class="toggle-slider"></div>
+                            </div>
+                        </div>
+                        <div class="condition-item">
+                            <span>Customer Consent on File</span>
+                            <div class="toggle active" onclick="toggleCondition(this)">
+                                <div class="toggle-slider"></div>
+                            </div>
+                        </div>
+                        <div class="condition-item">
+                            <span>Accessing Own Branch Data</span>
+                            <div class="toggle" onclick="toggleCondition(this)">
+                                <div class="toggle-slider"></div>
+                            </div>
+                        </div>
+                        <div class="condition-item">
+                            <span>Compliance Training Current</span>
+                            <div class="toggle active" onclick="toggleCondition(this)">
+                                <div class="toggle-slider"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <p style="margin-top: 1rem; color: #b0bec5; font-size: 0.85rem; line-height: 1.5;">
+                        <strong>How it works:</strong> Toggle conditions to see how they affect access. 
+                        In "Allow" mode, access is granted when enough positive conditions are met. 
+                        In "Restrict" mode, access is denied when certain conditions are active.
+                    </p>
+                </div>
+                
+                <div class="result-display">
+                    <h3>Access Decision</h3>
+                    <div class="access-indicator access-granted" id="accessIndicator">
+                        ✓
+                    </div>
+                    <p id="accessMessage" style="font-size: 1.2rem; font-weight: bold;">Access Granted</p>
+                    <p id="accessReason" style="margin-top: 1rem; color: #b0bec5; font-size: 0.9rem;">
+                        All required conditions are met for secure access
+                    </p>
+                    <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(255, 255, 255, 0.05); border-radius: 8px;">
+                        <p style="font-size: 0.85rem; color: #b0bec5;">
+                            <strong>Policy Applied:</strong><br>
+                            <span id="policyDescription">Allow bank employees to view customer data when conditions are met</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="text-align: center; padding: 4rem 2rem 2rem; margin-top: 2rem;">
+        <div style="width: 80px; height: 1px; background: rgba(79, 195, 247, 0.2); margin: 0 auto 1.5rem;"></div>
+        <p style="color: #546e7a; font-size: 0.8rem; opacity: 0.6; letter-spacing: 0.5px;">
+            Made by the SE Team for Walkthrough Purposes Only
+        </p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
